@@ -6,13 +6,13 @@ for T in range(tc):
     n = int(input())
     boxs = list(map(int, input().split()))
 
-    result = boxs[0]
-    cnt = 0
+    finally_cnt = 0
 
-    for i in range(len(boxs)):
-        if result > boxs[i]:
-            cnt += 1
-        elif cnt < 1:
-            result = boxs[i]
+    for i in range(n):
+        cnt = 0
+        for j in range(i + 1, n):
+            if boxs[i] > boxs[j]:
+                cnt += 1
+        finally_cnt = max(finally_cnt, cnt)
         
-    print(f"#{T+1} {cnt}")
+    print(f"#{T+1} {finally_cnt}")
