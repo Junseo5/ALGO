@@ -13,18 +13,22 @@ GNS_dict = {
         'NIN' : 9,
     }
 
-def bubble_sort(arr):
-    global GNS_dict
-    n = len(arr)
-    for i in range(n):
-        swapped = False
-        for j in range(0, n-i-1):
-            if GNS_dict[arr[j]] > GNS_dict[arr[j+1]]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-                swapped = True
-        if not swapped:
-            break
-    return arr
+# 버블 정렬하니까 너무 느렸던 관계로 주석처리..
+# def bubble_sort(arr):
+#     global GNS_dict
+#     n = len(arr)
+#     for i in range(n):
+#         swapped = False
+#         for j in range(0, n-i-1):
+#             if GNS_dict[arr[j]] > GNS_dict[arr[j+1]]:
+#                 arr[j], arr[j+1] = arr[j+1], arr[j]
+#                 swapped = True
+#         if not swapped:
+#             break
+#     return arr
+
+def sort_gns(arr, mapping):
+    return sorted(arr, key=lambda x: mapping[x])
 
 tc = int(input())
 
@@ -33,6 +37,4 @@ for T in range(tc):
     GNS = input().split()
 
     print(f"#{T + 1}")
-    print(*bubble_sort(GNS))
-
-# 레전드 시간 복잡도 형식(12초)
+    print(*sort_gns(GNS, GNS_dict))
