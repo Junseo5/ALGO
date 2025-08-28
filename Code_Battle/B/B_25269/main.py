@@ -2,8 +2,6 @@
 import sys
 from solution import init, sell, closeSale, discount, show
 
-import solution
-
 CMD_INIT = 100
 CMD_SELL = 200
 CMD_CLOSE_SALE = 300
@@ -17,20 +15,20 @@ def run1():
         input_iter = iter(input().split())
         cmd = int(next(input_iter))
         if cmd == CMD_INIT:
-            solution.init()
+            init()
             okay = True
         elif cmd == CMD_SELL:
             mID = int(next(input_iter))
             mCategory = int(next(input_iter))
             mCompany = int(next(input_iter))
             mPrice = int(next(input_iter))
-            ret = solution.sell(mID, mCategory, mCompany, mPrice)
+            ret = sell(mID, mCategory, mCompany, mPrice)
             ans = int(next(input_iter))
             if ret != ans:
                 okay = False
         elif cmd == CMD_CLOSE_SALE:
             mID = int(next(input_iter))
-            ret = solution.closeSale(mID)
+            ret = closeSale(mID)
             ans = int(next(input_iter))
             if ret != ans:
                 okay = False
@@ -38,14 +36,14 @@ def run1():
             mCategory = int(next(input_iter))
             mCompany = int(next(input_iter))
             mAmount = int(next(input_iter))
-            ret = solution.discount(mCategory, mCompany, mAmount)
+            ret = discount(mCategory, mCompany, mAmount)
             ans = int(next(input_iter))
             if ret != ans:
                 okay = False
         elif cmd == CMD_SHOW:
             mHow = int(next(input_iter))
             mCode = int(next(input_iter))
-            res = solution.show(mHow, mCode)
+            res = show(mHow, mCode)
             cnt = int(next(input_iter))
             if res.cnt != cnt:
                 okay = False
