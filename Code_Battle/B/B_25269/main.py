@@ -2,6 +2,10 @@
 import sys
 from solution import init, sell, closeSale, discount, show
 
+import time
+
+start = time.time()
+
 CMD_INIT = 100
 CMD_SELL = 200
 CMD_CLOSE_SALE = 300
@@ -63,3 +67,7 @@ T, MARK = map(int, input().split())
 for tc in range(1, T + 1):
     score = MARK if run1() else 0
     print("#%d %d" % (tc, score), flush = True)
+
+end = time.time()
+
+print(f"{end - start:.5f} sec")
