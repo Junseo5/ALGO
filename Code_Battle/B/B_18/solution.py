@@ -7,7 +7,7 @@
 # 계산은 100번 호출되는 순위 출력에서만
 
 from typing import List
-from collections import deque
+from collections import deque, defaultdict, Counter
 
 # def init(N : int) -> None:
 def init(N):
@@ -39,20 +39,39 @@ def top5Keyword(mRet):
     dq_set_list = set(dq_list)
     save_list = []
 
+    # for i in dq_set_list:
+    #     for j in dq_set_list:
+    #         # 문자열 길이가 같지 않을 경우 유사어 아님
+    #         if len(i) != len(j):
+    #             continue
+    #         cnt = 0
+    #         # 길이가 같은 문자열 두개를 한단어씩 비교
+    #         for ch1, ch2 in zip(i, j):
+    #             if ch1 != ch2:
+    #                 cnt += 1
+    #                 if cnt > 1:
+    #                     break
+    
+
+    same_len_dict = defaultdict(list)
+    same_list = []
+
     for i in dq_set_list:
-        for j in dq_set_list:
-            # 문자열 길이가 같지 않을 경우 유사어 아님
-            if len(i) != len(j):
-                continue
-            cnt = 0
-            # 길이가 같은 문자열 두개를 한단어씩 비교
-            for ch1, ch2 in zip(i, j):
-                if ch1 != ch2:
-                    cnt += 1
-                    if cnt > 1:
-                        break
+        same_len_dict[len(i)].append(i)
 
+    for i in same_len_dict.values():
+        same_dict = defaultdict(list)
 
-
+        for j in i:
+            for k in range(len(j)):
+                temp = j[:k] + '@' + j[k+1:]
+                same_dict[temp].append(j)
+        
+        for origin, same in same_dict.items():
+            if len(same) > 1:
+                for j in range(len(same)):
+                    for k in range(j+1, len(same)):
+                        same_list.append((same[j], same[k]))
+    
 
     return len(mRet)
