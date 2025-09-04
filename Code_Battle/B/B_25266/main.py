@@ -1,6 +1,8 @@
 #####main.py
-import sys
+import sys, time
 from solution import init, pickup, reset, getBest
+
+st = time.time()
 
 CMD_INIT = 100
 CMD_PICKUP = 200
@@ -78,3 +80,5 @@ T, MARK = map(int, input().split())
 for tc in range(1, T + 1):
 	score = MARK if run1() else 0
 	print("#%d %d" % (tc, score))
+
+print(f"{time.time() - st} sec")
