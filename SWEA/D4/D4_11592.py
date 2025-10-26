@@ -12,3 +12,4 @@ for tc in range(1, T + 1):
     speed = D / max_time
 
     print(f"#{tc} {speed:.7f}")
+
